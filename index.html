@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Incoming Transmission</title>
+
+<style>
+body{
+background:black;
+color:#00ff00;
+font-family:monospace;
+text-align:center;
+padding-top:100px;
+}
+
+#flyer{
+display:none;
+margin-top:30px;
+}
+
+.progress{
+width:320px;
+height:20px;
+border:1px solid #00ff00;
+margin:auto;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:#00ff00;
+}
+
+.code{
+margin-top:20px;
+font-size:14px;
+opacity:0.7;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>INCOMING TRANSMISSION</h2>
+<p id="text">Decrypting secure church message...</p>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div id="code" class="code"></div>
+
+<div id="flyer">
+
+<h1>ACCESS GRANTED</h1>
+
+<h2>JESUS FEST 2026</h2>
+
+<p>Bibb Mt. Baptist Church</p>
+
+<p>More details coming soon!</p>
+
+<img src="jesusfest.jpg" width="420">
+
+</div>
+
+<script>
+
+let progress = 0;
+let bar = document.getElementById("bar");
+let code = document.getElementById("code");
+
+let interval = setInterval(function(){
+
+progress += 2;
+bar.style.width = progress + "%";
+
+code.innerHTML += Math.random().toString(36).substring(2,10)+"<br>";
+
+if(progress >= 100){
+
+clearInterval(interval);
+
+document.getElementById("text").innerHTML = "Decrypting event file...";
+
+setTimeout(function(){
+
+document.getElementById("flyer").style.display = "block";
+
+},1500);
+
+}
+
+},100);
+
+</script>
+
+</body>
+</html>
